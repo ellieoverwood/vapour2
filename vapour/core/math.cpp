@@ -1,6 +1,6 @@
 #include "math.h"
 
-using namespace vapour::core::math;
+using namespace vapour::math;
 
 vec3::vec3(double _x, double _y, double _z) {
 	x = _x;

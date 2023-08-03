@@ -2,7 +2,7 @@
 #include <iostream>
 
 using namespace vapour;
-using namespace vapour::core::ecs;
+using namespace vapour::ecs;
 
 Context::Context() {
 	for (ID entity = 0; entity < ENTITY_CAP; entity++) {

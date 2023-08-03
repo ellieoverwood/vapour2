@@ -2,7 +2,7 @@
 
 #include <cstdarg>
 
-using namespace vapour::core;
+using namespace vapour;
 
 void console::breakpoint() {
 	printf("| breakpoint tripped\n");
@@ -19,6 +19,7 @@ void console::blank() {
 void console::log(int size, ...) {
 	va_list args;
 	va_start(args, size);
+	printf("| ");
 
 	for (int i = 0; i < size; i ++) {
 		const char* line = va_arg(args, const char*);

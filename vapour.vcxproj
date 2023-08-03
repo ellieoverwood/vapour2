@@ -121,6 +121,9 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -143,25 +146,33 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="prefs.h" />
-    <ClInclude Include="src\core\console.h" />
-    <ClInclude Include="src\core\ecs.h" />
-    <ClInclude Include="src\core\gl\generated\gl_funcs.h" />
-    <ClInclude Include="src\core\gl\gl.h" />
-    <ClInclude Include="src\core\gl\gl_load.h" />
-    <ClInclude Include="src\core\math.h" />
-    <ClInclude Include="src\core\window.h" />
-    <ClInclude Include="src\external\glcorearb.h" />
-    <ClInclude Include="src\external\khrplatform.h" />
-    <ClInclude Include="src\render\renderer.h" />
+    <ClInclude Include="vapour\core\console.h" />
+    <ClInclude Include="vapour\core\ecs.h" />
+    <ClInclude Include="vapour\core\gl\generated\gl_funcs.h" />
+    <ClInclude Include="vapour\core\gl.h" />
+    <ClInclude Include="vapour\core\gl\gl_load.h" />
+    <ClInclude Include="vapour\core\math.h" />
+    <ClInclude Include="vapour\core\window.h" />
+    <ClInclude Include="vapour\external\glcorearb.h" />
+    <ClInclude Include="vapour\external\khrplatform.h" />
+    <ClInclude Include="vapour\meta\startup.h" />
+    <ClInclude Include="vapour\render\renderer.h" />
+    <ClInclude Include="vapour\include.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\core\console.cpp" />
-    <ClCompile Include="src\core\ecs.cpp" />
-    <ClCompile Include="src\core\gl\generated\gl_funcs.cpp" />
-    <ClCompile Include="src\core\gl\gl.cpp" />
-    <ClCompile Include="src\core\math.cpp" />
-    <ClCompile Include="src\core\window.cpp" />
-    <ClCompile Include="src\render\renderer.cpp" />
+    <ClCompile Include="vapour\core\console.cpp" />
+    <ClCompile Include="vapour\core\ecs.cpp" />
+    <ClCompile Include="vapour\core\gl\generated\gl_funcs.cpp" />
+    <ClCompile Include="vapour\core\gl.cpp" />
+    <ClCompile Include="vapour\core\math.cpp" />
+    <ClCompile Include="vapour\core\window.cpp" />
+    <ClCompile Include="vapour\render\renderer.cpp" />
+    <ClCompile Include="vapour\meta\startup.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vapour\core\gl\generated\function_names.json" />
+    <None Include="vapour\core\gl\gl_gen_buffer.py" />
+    <None Include="vapour\core\gl\gl_gen_scripts.py" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,7 +9,6 @@
 #include <gl/GL.h>
 
 namespace vapour { 
-namespace render { 
 namespace gl {
 
 	static PFNGLCULLFACEPROC                                           cull_face;
@@ -674,7 +673,6 @@ namespace gl {
 
 
 	void __autogen_load_all();
-}
 }
 }
 

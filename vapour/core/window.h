@@ -3,9 +3,7 @@
 #include <Windows.h>
 
 namespace vapour {
-	namespace core {
-		namespace window {
+	namespace window {
 
-		}
 	}
 }

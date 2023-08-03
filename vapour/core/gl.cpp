@@ -1,7 +1,6 @@
 #include "gl.h"
-#include <iostream>
 
-using namespace vapour::render;
+using namespace vapour;
 static HMODULE opengl32;
 
 void* gl::load_func(const char* name) {
@@ -18,4 +17,5 @@ void* gl::load_func(const char* name) {
 
 void gl::load() {
     opengl32 = LoadLibraryA("opengl32.dll");
+    gl::__autogen_load_all();
 }

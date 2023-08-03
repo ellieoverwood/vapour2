@@ -2,7 +2,7 @@
 
 #include "../core/ecs.h"
 #include "../core/math.h"
-#include "../core/gl/gl.h"
+#include "../core/gl.h"
 
 namespace vapour {
 	namespace render {
