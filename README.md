@@ -24,8 +24,7 @@ void vapour::setup() {
     renderer = Renderer::declare();
 
     camera = entity::spawn();
-    camera.add<Transform>();
-    camera.get<Transform>()->position.x = 3;
+    camera.add<Transform>()->position.x = 3;
 }
 
 void vapour::main() {
