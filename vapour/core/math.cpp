@@ -715,3 +715,7 @@ Transform::Transform(quat rot) {
 std::string Transform::string() {
 	return "[transform] {\n  position: " + position.string() + "\n  rotation: " + rotation.string() + "\n  scale:    " + scale.string() + "\n}";
 }
+
+void Transform::declare() {
+	context.register_component<Transform>();
+}

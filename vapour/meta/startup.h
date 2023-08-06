@@ -3,6 +3,6 @@
 #include "../core/ecs.h"
 
 namespace vapour {
-	extern void setup(Context* ctx);
-	extern void update(Context* ctx);
+	extern void setup();
+	extern void update();
 }

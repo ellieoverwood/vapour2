@@ -11,7 +11,7 @@ namespace vapour {
 			Renderer(vapour::Context* ctx);
 			~Renderer();
 
-			static Renderer* get(Context* ctx) {
+			static Renderer* declare(Context* ctx) {
 					static Renderer renderer(ctx);
 					return &renderer;
 			}

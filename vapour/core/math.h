@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "ecs.h"
 
 namespace vapour {
 	namespace math {
@@ -159,6 +160,8 @@ namespace vapour {
 
 			mat4 matrix() const;
 			std::string string();
+
+			static void declare();
 		};
 	}
 }

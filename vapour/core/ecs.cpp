@@ -10,15 +10,11 @@ Context::Context() {
 	}
 }
 
-EntityWrapper Context::spawn() {
+ID Context::spawn() {
 	ID id = available_ids.front();
 	available_ids.pop();
 
-	return entity(id);
-}
-
-EntityWrapper Context::entity(ID id) {
-	return EntityWrapper(id, this);
+	return id;
 }
 
 ComponentID Context::get_component_id(const char* name) {
@@ -52,11 +48,14 @@ void Context::delete_components(ID id) {
 	clear_component_flags(id);
 }
 
-EntityWrapper::EntityWrapper(ID _id, Context* _ctx) {
+EntityWrapper::EntityWrapper(ID _id) {
 	id = _id;
-	ctx = _ctx;
 }
 
 void EntityWrapper::destroy() {
-	ctx->delete_components(id);
+	vapour::context.delete_components(id);
+}
+
+EntityWrapper EntityWrapper::spawn() {
+	return EntityWrapper(vapour::context.spawn());
 }

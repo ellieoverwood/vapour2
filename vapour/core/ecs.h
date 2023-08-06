@@ -12,6 +12,12 @@ namespace vapour {
 	using ID          = uint32_t;
 
 	namespace ecs {
+		class Context;
+	}
+
+	static ecs::Context context;
+
+	namespace ecs {
 		using ComponentID = uint16_t;
 
 		struct ComponentRegister {
@@ -31,50 +37,6 @@ namespace vapour {
 			}
 		};
 
-		template <typename T>
-		struct ComponentRegisterHandle {
-			struct Iterator {
-				T* component;
-				ID* id;
-
-				Iterator(T* _component, ID* _id) {
-					component = _component;
-					id = _id;
-				}
-
-				bool operator!=(const Iterator& compare) const {
-					return component != compare.component;
-				}
-
-				Iterator& operator++() {
-					component++;
-					id++;
-
-					return *this;
-				}
-
-				const Iterator operator*() const { return *this; }
-			};
-
-			T* components;
-			ID* ids;
-			size_t* size;
-
-			ComponentRegisterHandle(ComponentRegister* _register) {
-				components = (T*)(_register->start);
-				ids = _register->data_to_id;
-				size = &_register->index_index;
-			}
-
-			Iterator begin() const {
-				return Iterator(components, ids);
-			}
-
-			Iterator end() const {
-				return Iterator(&components[*size], &ids[*size]);
-			}
-		};
-
 		struct EntityWrapper;
 
 		class Context {
@@ -84,8 +46,7 @@ namespace vapour {
 
 			Context();
 
-			EntityWrapper spawn();
-			EntityWrapper entity(ID id);
+			ID spawn();
 
 			template <typename T>
 			void register_component() {
@@ -94,13 +55,8 @@ namespace vapour {
 			}
 
 			template <typename T>
-			T* register_system() {
-				return T::get(this);
-			}
-
-			template <typename T>
-			ecs::ComponentRegisterHandle<T> handle() {
-				return ecs::ComponentRegisterHandle<T>(&component_registry[get_component_id(typeid(T).name())]);
+			ComponentRegister* handle() {
+				return &component_registry[get_component_id(typeid(T).name())];
 			}
 
 		private:
@@ -164,11 +120,62 @@ namespace vapour {
 			ecs::ComponentRegister     component_registry[COMPONENT_CAP];
 		};
 
+		template <typename T>
+		struct ComponentRegisterHandle {
+			struct Iterator {
+				T* component;
+				ID* id;
+
+				Iterator(T* _component, ID* _id) {
+					component = _component;
+					id = _id;
+				}
+
+				bool operator!=(const Iterator& compare) const {
+					return component != compare.component;
+				}
+
+				Iterator& operator++() {
+					component++;
+					id++;
+
+					return *this;
+				}
+
+				const Iterator operator*() const { return *this; }
+			};
+
+			T* components;
+			ID* ids;
+			size_t* size;
+
+			ComponentRegisterHandle() {
+				ComponentRegister* _register = context.handle<T>();
+
+				components = (T*)(_register->start);
+				ids = _register->data_to_id;
+				size = &_register->index_index;
+			}
+
+			ComponentRegisterHandle(ComponentRegister* _register) {
+				components = (T*)(_register->start);
+				ids = _register->data_to_id;
+				size = &_register->index_index;
+			}
+
+			Iterator begin() const {
+				return Iterator(components, ids);
+			}
+
+			Iterator end() const {
+				return Iterator(&components[*size], &ids[*size]);
+			}
+		};
+
 		struct EntityWrapper {
 			ID id;
-			Context* ctx;
 
-			EntityWrapper(ID _id, Context* _ctx);
+			EntityWrapper(ID _id);
 			void destroy();
 
 			template <typename T>
@@ -190,11 +197,13 @@ namespace vapour {
 			bool has() {
 				return ctx->has_component_flag(id, ctx->get_component_id(typeid(T).name()));
 			}
+
+			static EntityWrapper spawn();
 		};
 	}
 
 	using entity  = ecs::EntityWrapper;
-	using Context = ecs::Context;
+
 	/*
 	class Context;
 

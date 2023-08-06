@@ -5,12 +5,11 @@ using namespace vapour;
 
 int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
 {
+	vapour::context = vapour::ecs::Context();
 
-	Context ctx;
+	vapour::setup();
 
-	vapour::setup(&ctx);
-
-	while (ctx.on) {
-		vapour::update(&ctx);
+	while (vapour::context.on) {
+		vapour::update();
 	}
 }
