@@ -17,14 +17,14 @@ using namespace vapour::math;
 using namespace vapour::render;
 
 Renderer* renderer;
-entity camera;
+entity object;
 
 void vapour::setup() {
     Transform::declare();
     renderer = Renderer::declare();
 
-    camera = entity::spawn();
-    camera.add<Transform>()->position.x = 3;
+    object = entity::spawn();
+    object.add<Transform>()->position.x = 3;
 }
 
 void vapour::main() {
