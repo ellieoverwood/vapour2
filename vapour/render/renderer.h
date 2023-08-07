@@ -8,15 +8,13 @@ namespace vapour {
 	namespace render {
 		class Renderer {
 		public:
-			Renderer(vapour::Context* ctx);
+			Renderer();
 			~Renderer();
 
-			static Renderer* declare(Context* ctx) {
-					static Renderer renderer(ctx);
+			static Renderer* declare() {
+					static Renderer renderer;
 					return &renderer;
 			}
-		private:
-			Context* ctx;
 		};
 	}
 }

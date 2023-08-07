@@ -10,6 +10,11 @@ Context::Context() {
 	}
 }
 
+Context& Context::instance() {
+	static Context instance;
+	return instance;
+}
+
 ID Context::spawn() {
 	ID id = available_ids.front();
 	available_ids.pop();

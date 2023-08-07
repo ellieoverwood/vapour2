@@ -5,17 +5,14 @@
 #include <unordered_map>
 #include <queue>
 #include <bitset>
+#include <typeinfo>
+
+#include <iostream>
 
 #include "../../prefs.h"
 
 namespace vapour {
 	using ID          = uint32_t;
-
-	namespace ecs {
-		class Context;
-	}
-
-	static ecs::Context context;
 
 	namespace ecs {
 		using ComponentID = uint16_t;
@@ -44,8 +41,6 @@ namespace vapour {
 			friend EntityWrapper;
 			bool on = true;
 
-			Context();
-
 			ID spawn();
 
 			template <typename T>
@@ -59,7 +54,11 @@ namespace vapour {
 				return &component_registry[get_component_id(typeid(T).name())];
 			}
 
+			static Context& instance();
+
 		private:
+			Context();
+
 			ComponentID get_component_id(const char* name);
 			void        add_component_flag(ID id, ComponentID component);
 			void        remove_component_flag(ID id, ComponentID component);
@@ -120,6 +119,11 @@ namespace vapour {
 			ecs::ComponentRegister     component_registry[COMPONENT_CAP];
 		};
 
+	}
+
+	static ecs::Context& context = ecs::Context::instance();
+
+	namespace ecs {
 		template <typename T>
 		struct ComponentRegisterHandle {
 			struct Iterator {
@@ -180,22 +184,22 @@ namespace vapour {
 
 			template <typename T>
 			T* add() {
-				return ctx->add_component<T>(id);
+				return context.add_component<T>(id);
 			}
 
 			template <typename T>
 			void remove() {
-				ctx->remove_component(id, ctx->get_component_id(typeid(T).name()));
+				context.remove_component(id, context.get_component_id(typeid(T).name()));
 			}
 
 			template <typename T>
 			T* get() {
-				return ctx->get_component<T>(id);
+				return context.get_component<T>(id);
 			}
 
 			template <typename T>
 			bool has() {
-				return ctx->has_component_flag(id, ctx->get_component_id(typeid(T).name()));
+				return context.has_component_flag(id, context.get_component_id(typeid(T).name()));
 			}
 
 			static EntityWrapper spawn();
