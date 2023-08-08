@@ -1,9 +1,8 @@
 #pragma once
 
-#include "gl/generated/gl_funcs.h"
-
+#ifdef _WIN32
+#include "win32/gl.h"
 namespace vapour {
-	namespace gl {
-		void load();
-	}
+	using namespace vapour::win32;
 }
+#endif

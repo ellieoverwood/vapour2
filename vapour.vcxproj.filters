@@ -18,13 +18,13 @@
     <ClInclude Include="prefs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vapour\core\gl\generated\gl_funcs.h">
+    <ClInclude Include="vapour\core\win32\generated\gl_funcs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vapour\core\gl.h">
+    <ClInclude Include="vapour\core\win32\gl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vapour\core\gl\gl_load.h">
+    <ClInclude Include="vapour\core\win32\gl_load.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vapour\core\console.h">
@@ -36,7 +36,7 @@
     <ClInclude Include="vapour\core\math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vapour\core\window.h">
+    <ClInclude Include="vapour\core\win32\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vapour\external\glcorearb.h">
@@ -54,12 +54,21 @@
     <ClInclude Include="vapour\meta\startup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="vapour\core\win32\wgl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vapour\core\gl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vapour\core\window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="vapour\core\gl\generated\gl_funcs.cpp">
+    <ClCompile Include="vapour\core\win32\generated\gl_funcs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vapour\core\gl.cpp">
+    <ClCompile Include="vapour\core\win32\gl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="vapour\core\console.cpp">
@@ -71,7 +80,7 @@
     <ClCompile Include="vapour\core\math.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vapour\core\window.cpp">
+    <ClCompile Include="vapour\core\win32\window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="vapour\render\renderer.cpp">
@@ -80,10 +89,13 @@
     <ClCompile Include="vapour\meta\startup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="vapour\core\win32\wgl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="vapour\core\gl\generated\function_names.json" />
-    <None Include="vapour\core\gl\gl_gen_buffer.py" />
-    <None Include="vapour\core\gl\gl_gen_scripts.py" />
+    <None Include="vapour\core\win32\generated\function_names.json" />
+    <None Include="vapour\core\win32\gl_gen_buffer.py" />
+    <None Include="vapour\core\win32\gl_gen_scripts.py" />
   </ItemGroup>
 </Project>

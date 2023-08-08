@@ -4,8 +4,14 @@
 
 using namespace vapour;
 
+
 int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
 {
+	window::win32.hinst = hInst;
+	window::win32.hinst_prev = hInstPrev;
+	window::win32.cmdline = cmdline;
+	window::win32.cmdshow = cmdshow;
+
 	vapour::setup();
 
 	while (vapour::context.on) {
