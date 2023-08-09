@@ -2,5 +2,6 @@
 
 #include "core/ecs.h"
 #include "core/math.h"
-#include "core/console.h"
-#include "meta/startup.h"
+
+#include "meta/config.h"
+#include "meta/callback.h"

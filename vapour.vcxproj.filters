@@ -15,87 +15,45 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="prefs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vapour\core\win32\generated\gl_funcs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vapour\core\win32\gl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vapour\core\win32\gl_load.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vapour\core\console.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <None Include="vapour\core\win32\generated\function_names.json" />
+    <None Include="vapour\core\win32\gl_gen_buffer.py" />
+    <None Include="vapour\core\win32\gl_gen_scripts.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\core\ecs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\wrapper\platform\win32\startup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\wrapper\platform\win32\popup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="vapour\core\ecs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vapour\core\math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vapour\core\win32\window.h">
+    <ClInclude Include="vapour\meta\callback.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vapour\external\glcorearb.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vapour\external\khrplatform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vapour\render\renderer.h">
+    <ClInclude Include="vapour\meta\config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vapour\include.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vapour\meta\startup.h">
+    <ClInclude Include="vapour\wrapper\popup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vapour\core\win32\wgl.h">
+    <ClInclude Include="vapour\core\assert.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vapour\core\gl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vapour\core\window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="vapour\core\win32\generated\gl_funcs.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vapour\core\win32\gl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vapour\core\console.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vapour\core\ecs.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vapour\core\math.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vapour\core\win32\window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vapour\render\renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vapour\meta\startup.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vapour\core\win32\wgl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="vapour\core\win32\generated\function_names.json" />
-    <None Include="vapour\core\win32\gl_gen_buffer.py" />
-    <None Include="vapour\core\win32\gl_gen_scripts.py" />
   </ItemGroup>
 </Project>

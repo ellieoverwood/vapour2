@@ -1,4 +1,4 @@
-#include "math.h"
+#include "../../vapour/core/math.h"
 
 using namespace vapour::math;
 

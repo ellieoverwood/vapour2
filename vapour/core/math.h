@@ -4,6 +4,11 @@
 
 namespace vapour {
 	namespace math {
+		struct vec2 {
+			double x;
+			double y;
+		};
+
 		struct vec3 {
 			double x;
 			double y;

@@ -1,13 +1,16 @@
-#include "ecs.h"
+#include "../../vapour/core/ecs.h"
 #include <iostream>
 
 using namespace vapour;
 using namespace vapour::ecs;
 
 Context::Context() {
-	for (ID entity = 0; entity < ENTITY_CAP; entity++) {
+	for (ID entity = 0; entity < vapour::config::entity_cap; entity++) {
 		available_ids.push(entity);
 	}
+
+	component_flags = new std::vector<bool>[vapour::config::component_cap];
+	component_registry = new ComponentRegister[vapour::config::component_cap];
 }
 
 Context& Context::instance() {
@@ -27,24 +30,24 @@ ComponentID Context::get_component_id(const char* name) {
 }
 
 void Context::add_component_flag(ID id, ComponentID component) {
-	component_flags[id].set(component);
+	component_flags[id][component] = true;
 }
 
 void Context::remove_component_flag(ID id, ComponentID component) {
-	component_flags[id].reset(component);
+	component_flags[id][component] = false;
 }
 
 void Context::clear_component_flags(ID id) {
-	component_flags[id].reset();
+	std::fill(component_flags[id].begin(), component_flags[id].end(), 0);
 }
 
 bool Context::has_component_flag(ID id, ComponentID component) {
-	return component_flags[id].test(component);
+	return component_flags[id][component];
 }
 
 void Context::delete_components(ID id) {
-	std::bitset<COMPONENT_CAP> components = component_flags[id];
-	for (unsigned int i = 0; i < COMPONENT_CAP; i ++) {
+	std::vector<bool> components = component_flags[id];
+	for (unsigned int i = 0; i < vapour::config::component_cap; i ++) {
 		if (components[i]) {
 			remove_component(id, i);
 		}

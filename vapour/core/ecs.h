@@ -9,7 +9,7 @@
 
 #include <iostream>
 
-#include "../../prefs.h"
+#include "../meta/config.h"
 
 namespace vapour {
 	using ID          = uint32_t;
@@ -18,8 +18,8 @@ namespace vapour {
 		using ComponentID = uint16_t;
 
 		struct ComponentRegister {
-			uint8_t* id_to_data[ENTITY_CAP];
-			ID data_to_id[ENTITY_CAP];
+			uint8_t** id_to_data;
+			ID* data_to_id;
 			uint8_t* start;
 			size_t index_index;
 			size_t component_size;
@@ -30,7 +30,9 @@ namespace vapour {
 
 			void allocate(size_t size) {
 				component_size = size;
-				start = (uint8_t*)malloc(ENTITY_CAP * component_size);
+				start = (uint8_t*)malloc(vapour::config::entity_cap * component_size);
+				id_to_data = new uint8_t*[vapour::config::entity_cap];
+				data_to_id = new ID[vapour::config::entity_cap];
 			}
 		};
 
@@ -115,8 +117,8 @@ namespace vapour {
 
 			std::queue<ID> available_ids;
 
-			std::bitset<COMPONENT_CAP> component_flags[COMPONENT_CAP];
-			ecs::ComponentRegister     component_registry[COMPONENT_CAP];
+			std::vector<bool>* component_flags;
+			ecs::ComponentRegister* component_registry;
 		};
 
 	}

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "../core/ecs.h"
-
 namespace vapour {
-	extern void setup();
+	extern void init();
 	extern void update();
 }
